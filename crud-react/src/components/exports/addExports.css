@@ -1,0 +1,42 @@
+.center-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+Form{
+
+    max-width: 350px;
+    width: 100%;
+    padding: 30px;
+    border: 1px solid #828080;
+    background-color: 1px solid #828080;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+       
+   
+} 
+select{
+    margin: 5px;
+    padding: 3px;
+    width: 80%;
+    border-radius: 5px;
+
+}
+input {
+    margin: 60px;
+    padding: 3px;
+    width: 80%;
+    border-radius: 5px;
+
+}
+
+
+label{
+    font-weight: bold;
+    padding: 9px;
+}
+

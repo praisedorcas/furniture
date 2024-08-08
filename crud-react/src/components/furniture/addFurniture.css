@@ -1,0 +1,31 @@
+.center-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+Form{
+
+    max-width: 350px;
+    width: 100%;
+    padding: 50px;
+    border: 1px solid #828080;
+    background-color: #ffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+}   
+
+label{
+    font-weight: bold;
+}
+
+.w-100{
+    background-color: #0000;
+    color: #ffff;
+    border: none;
+    padding: 10px;
+}
