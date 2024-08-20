@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Nav,Button,Table} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './getExport.css';
+import axios from 'axios';
 
 function GetExport() {
     const [exports, setexport] = useState([]);
@@ -12,6 +13,21 @@ function GetExport() {
             .then(data => setexport(data))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
+
+    const handleDelete = (ExportId) => {
+        const confirmDelete = window.confirm("Do you really want to delete this item?");
+        if (confirmDelete) {
+            axios.delete(`http://localhost:5000/export/${ExportId}`)
+                .then(res => {
+                    alert("Record has been deleted");
+
+                    // Update the state to remove the deleted item
+                    setexport(prevExports => prevExports.filter(item => item._id !== ExportId));
+                })
+                .catch(err => console.log('Error deleting item:', err));
+        }
+    };
+
 
     return (
         <div align="center">
@@ -36,8 +52,12 @@ function GetExport() {
                             <td>{item.FurnitureId}</td>
                             <td>{item.ExportDate}</td>
                             <td>{item.Quantity}</td>
-                            <td><Button variant ='success'>Edit</Button></td>
-                            <td><Button variant ='danger'>Delete</Button></td>
+                            <td> <Link className='btn btn-success mx-1' to={`/updateExport/${item._id}`}>Edit</Link>
+                                <Button
+                                    variant='danger'
+                                    className='mx-1'
+                                    onClick={() => handleDelete(item._id)}
+                                >Delete</Button></td>
                         </tr>
                          
                     ))}

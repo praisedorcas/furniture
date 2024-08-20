@@ -10,6 +10,7 @@ import Nomatch from './components/nomatch/nomatch';
 import GetFurniture from './components/getFurniture/getFurniture';
 import GetExport from  './components/getExport/getExport';
 import UpdateFurniture from './components/updateFuniture/updateFuniture';
+import UpdateExport from './components/updateExport/updateExport';
 
 
 
@@ -23,7 +24,8 @@ function App() {
   <Route path='/export' element={<AddExport/>}> </Route>
   <Route path='/getFurniture' element={<GetFurniture></GetFurniture>}> </Route>
   <Route path='/getExport' element={<GetExport></GetExport>}> </Route>
-  <Route path='/updateFuniture/:id' element={<UpdateFurniture></UpdateFurniture>}> </Route>
+  <Route path='/updateFuniture/:FurnitureId' element={<UpdateFurniture></UpdateFurniture>}> </Route>
+  <Route path='/updateExport/:ExportId' element={<UpdateExport></UpdateExport>}> </Route>
   <Route path='*' element={<Nomatch></Nomatch>}> </Route>
   </Routes>
     </>

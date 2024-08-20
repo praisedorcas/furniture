@@ -40,6 +40,21 @@ app.get('/furniture/:FurnitureId', async (req, res) => {
   }
 });
 
+app.get('/export/:ExportId', async (req, res) => {
+  try {
+
+    const {ExportId} = req.params;
+    console.log(ExportId)
+    const ex = await Export.findById(ExportId);
+
+    res.status(200).json(ex);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: error.message });
+    
+  }
+});
+
 app.get('/furniture', async (req, res) => {
   try {
     const furniture = await Furniture.find({});
@@ -94,12 +109,34 @@ app.put('/furniture/:id', async (req, res) => {
   }
 });
 
-// Delete furniture item
-app.delete('/api/furniture/:id', async (req, res) => {
+app.put('/export/:id', async (req, res) => {
   try {
-    const { id } = req.params;
-    await Furniture.findByIdAndDelete(id);
+    const {id} = req.params;
+    const updatedExport = await Export.findByIdAndUpdate(id, req.body, { new: true });
+    res.json(updatedExport);
+
+  
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Delete furniture item
+app.delete('/furniture/:FurnitureId', async (req, res) => {
+  try {
+    const { FurnitureId } = req.params;
+    await Furniture.findByIdAndDelete(FurnitureId);
     res.json({ message: 'Furniture item deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+app.delete('/export/:ExportId', async (req, res) => {
+  try {
+    const { ExportId } = req.params;
+    await Export.findByIdAndDelete(ExportId);
+    res.json({ message: 'Export item deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
